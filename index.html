@@ -1,70 +1,106 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Affordable and professional web design">
-	  <meta name="keywords" content="web design, affordable web design, professional web design">
-  	<meta name="author" content="Ibrahim Mkumba">
-    <title>Scopion Data Malawi | Welcome</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" type="img/png" href="img/favicon.png">
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <div id="branding">
-          <h1><span class="highlight">Scopion</span> Data Malawi</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria, Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: limegreen;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .bear {
+            width: 150px;
+            height: auto;
+            animation: float 2s infinite alternate;
+        }
+        @keyframes float {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-10px); }
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        .no {
+            background-color: #ccc;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Maria, will you be my Valentine? 💖</h1>
+        <img src="media\kisses.gif" alt="Cute Bear" class="bear">
+        <div class="buttons">
+            <button class="btn yes" id="yes">Yes 💕</button>
+            <button class="btn no" id="no">No 💔</button>
         </div>
-        <nav>
-          <ul>
-            <li class="current"><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+        <div id="videoContainer"></div>
+    </div>
 
-    <section id="showcase">
-      <div class="container">
-        <h1>Affordable Professional Web Design</h1>
-        <p>Tailored made websites detailed to your specific needs, coded by young Professionals striving to give you the highest quality service.</p>
-      </div>
-    </section>
+    <script>
+        let noButton = document.getElementById("no");
+        let yesButton = document.getElementById("yes");
+        let messages = [
+            "Are you sure?",
+            "Really sure?",
+            "Think about it...",
+            "Last chance!",
+            "You might regret this...",
+            "Are you absolutely certain?",
+            "You have a good heart, surely not?",
+            "Don't be so cold...",
+            "Change of heart?",
+            "Is this your final answer?",
+            "The bears will be heartbroken...",
+            "You wrote love letters!",
+            "I made you that really good pasta that one time!",
+            "They will cry little bear tears!",
+            "You're breaking boops little heart!",
+            "Love is in the air, don’t resist it!"
+        ];
+        let index = 0;
+        noButton.addEventListener("click", function() {
+            if (index < messages.length) {
+                noButton.innerText = messages[index];
+                index++;
+                yesButton.style.fontSize = `${20 + index * 5}px`;
+            } else {
+                alert("Okay, you will be my valentine next year and the years there after 😭");
+            }
+        });
 
-    <section id="newsletter">
-      <div class="container">
-        <h1>Subscribe To Our Newsletter</h1>
-        <form>
-          <input type="email" placeholder="Enter Email...">
-          <button type="submit" class="button_1">Subscribe</button>
-        </form>
-      </div>
-    </section>
-
-    <section id="boxes">
-      <div class="container">
-        <div class="box">
-          <img src="./img/computer.png">
-          <h3>Web Design</h3>
-          <p>Our web design services will greatly enhance your business's presence on the internet.</p>
-        </div>
-        <div class="box">
-          <img src="./img/coding.png">
-          <h3>Website Development</h3>
-          <p>Our website development services are on the cutting edge of today's technologies. Our web developers are versed in all web technologies.</p>
-        </div>
-        <div class="box">
-          <img src="./img/tools.png">
-          <h3>Website Maintenance</h3>
-          <p>We clean up, debug and update websites to latest technologies and give it a more modern feel.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <p>Scorpion Data Malawi, Copywrite &copy; 2018</p>
-    </footer>
-  </body>
+        yesButton.addEventListener("click", function() {
+            let video = document.createElement('iframe');
+            video.width = '560';
+            video.height = '315';
+            video.src = 'https://www.youtube.com/embed/DeggZZLnyHU?autoplay=1&rel=0';
+            video.frameBorder = '0';
+            video.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            video.allowFullscreen = true;
+            let container = document.getElementById("videoContainer");
+            container.innerHTML = "";
+            container.appendChild(video);
+            
+            alert("Yay! The peoples are happy! 🐻💕");
+        });
+    </script>
+</body>
 </html>
